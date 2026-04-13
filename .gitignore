@@ -1,0 +1,15 @@
+data/raw/
+*.joblib
+*.npy
+*.csv
+
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+data_/
+sql_script/inserts_arxiv_metadata.sql
+*_test.ipynb
+
+.DS_Store/
+.env
