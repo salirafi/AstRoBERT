@@ -28,12 +28,11 @@ Evaluation was conducted using Precision@5, where relevance was defined by overl
 
 ## Running
 
-Most of the project's steps can be done by following the notebooks from `01_*.ipynb,` simple EDA and data extraction, to `04_*.ipynb`, the evaluation. Make sure to first run
+Most of the project's steps can be done by following the notebooks from `01_*.ipynb`, simple EDA and data extraction, to `04_*.ipynb`, the evaluation. Make sure to first run
 ```
 pip install -r requirements.txt
 ```
 
-## Sources
 
 ## Sources
 
