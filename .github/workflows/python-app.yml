@@ -19,7 +19,7 @@ jobs:
       - name: Go to the hugging face space
         run: |
           agent-browser open ${{ secrets.HUGGING_FACE_SPACE_URL }}
-          agent-browser wait --text "Sign in"
+          agent-browser wait --text "AstRoBERT"
           agent-browser screenshot page.png
           agent-browser close
 
