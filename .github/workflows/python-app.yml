@@ -1,0 +1,30 @@
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  access-hugging-face-n8n:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install agent-browser
+        run: npm install -g agent-browser
+
+      - name: Install Playwright browsers
+        run: agent-browser install --with-deps
+
+      - name: Go to the hugging face space
+        run: |
+          agent-browser open ${{ secrets.https://huggingface.co/spaces/salirafi/AstRoBERT }}
+          agent-browser wait --text "Sign in"
+          agent-browser screenshot page.png
+          agent-browser close
+
+      - name: Notify Discord on done access
+        if: success()
+        run: |
+          curl --fail-with-body -sS -X POST \
+            -F 'payload_json={"content":"Hugging Face access job done."}' \
+            -F "file1=@page.png;type=image/png" \
+            "${{ secrets.https://discord.com/api/webhooks/1495069692803416278/MgA--82sK3YYci2HqZvUCyNNQOGbZ50348qCfjNNxEiISrqIZQRmHW_-FkVKCe-h_2Mp }}"
