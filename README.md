@@ -1,3 +1,13 @@
+---
+license: mit
+title: AstRoBERT
+sdk: gradio
+emoji: 🚀
+colorFrom: gray
+colorTo: indigo
+short_description: NLP-based abstract recommender for astrophysics papers
+---
+
 # AstRoBERT: An Abstract Recommender
 
 AstRoBERT is a simple NLP-based recommender system built from the pre-trained [distilRoBERTa](https://huggingface.co/sentence-transformers/all-distilroberta-v1) transformer model and semantic search using [FAISS](https://faiss.ai), specifically for searching semantically similar abstracts for astrophysics papers uploaded to the [arXiv](https://arxiv.org/archive/astro-ph). The database is provided by the ArXiv team from [HERE](https://arxiv.org/archive/astro-ph) containing more than 381,000 papers as of March 2026.
