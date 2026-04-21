@@ -53,7 +53,6 @@ pip install -r requirements.txt
 - [FAISS Documentation](https://faiss.ai/) is used for efficient similarity search over the many abstract embeddings.
 
 
-
 ## Author's Remarks
 
 The use of generative AI includes: Github Copilot to help in code syntax and identifying bugs and errors. Outside of those, including problem formulation and framework of thinking, code logical reasoning and writing, from database management to web development, all is done mostly by the author.
