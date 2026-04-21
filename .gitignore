@@ -11,5 +11,5 @@ data_/
 sql_script/inserts_arxiv_metadata.sql
 *_test.ipynb
 
-.DS_Store/
+.DS_Store
 .env

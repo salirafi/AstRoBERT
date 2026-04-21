@@ -10,13 +10,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          lfs: true
 
-      - uses: huggingface/hub-sync@v0.1.0
-        with:
-          github_repo_id: ${{ github.repository }}
-          huggingface_repo_id: salirafi/AstRoBERT
-          hf_token: ${{ secrets.HF_TOKEN }}
-          repo_type: space
-          space_sdk: gradio
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Sync GitHub repo to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          uvx --from "huggingface_hub[cli]" hf repos create salirafi/AstRoBERT \
+            --repo-type space \
+            --space-sdk gradio \
+            --exist-ok \
+            --token "$HF_TOKEN"
+
+          uvx --from "huggingface_hub[cli]" hf upload salirafi/AstRoBERT . . \
+            --repo-type space \
+            --token "$HF_TOKEN" \
+            --delete "*" \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude ".DS_Store" \
+            --exclude "**/.DS_Store" \
+            --exclude ".env" \
+            --exclude ".venv/*" \
+            --exclude "__pycache__/*" \
+            --exclude "data_/*" \
+            --exclude "data/BERT_embeddings/faiss_index.index" \
+            --commit-message "Sync GitHub repo to Hugging Face Space"
